@@ -1,6 +1,6 @@
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
-import SocialIcon from '@/components/social-icons'
+import SocialIcon from '@/components/social-icons/index'
 
 export default function Footer() {
   return (
@@ -14,17 +14,31 @@ export default function Footer() {
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
           <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
         </div>
-        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{siteMetadata.author}</div>
+        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400 ">
+          <Link href="/" className="footer-link">
+            {siteMetadata.title}
+          </Link>
           <div>{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
-          <Link href="/">{siteMetadata.title}</Link>
         </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
+        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <Link
+            href="https://github.com/timlrx/tailwind-nextjs-starter-blog"
+            className="footer-link"
+          >
             Tailwind Nextjs Theme
           </Link>
+          <div>{` • `}</div>
+          <div className="flex space-x-1">
+            <Link href="https://iconscout.com/icons/sheep" className="footer-link">
+              Sheep Icon
+            </Link>
+            <div>by</div>
+            <Link href="https://iconscout.com/contributors/icograms" className="footer-link">
+              Icograms
+            </Link>
+            <span> 🐑</span>
+          </div>
         </div>
       </div>
     </footer>
