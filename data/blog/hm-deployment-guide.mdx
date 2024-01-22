@@ -1,0 +1,91 @@
+---
+title  : The Herd Mentality article deployment guide
+date   : '2024-01-20'
+tags   : ['meta', 'nodejs']
+draft  : false
+summary: 'A short, practical guide on how to deploy MDX articles to herdmentality.xyz'
+authors: ['christophermortimer', 'darrenwong']
+---
+
+import { Caption, Highlight } from './components/InPostComponents.tsx'
+
+<TOCInline toc={props.toc} indentDepth={2} />
+<br/>
+
+
+# (?) Introduction
+
+- Have put the proposed author of each section in the headings but will remove those before publishing
+
+# (CM) Setting up Node.js
+
+- Setting up Node.js for windows and linux/macos?
+- npm install to get all packages?
+
+# (CM/DW) Cloning hm_blog / opening with VSCode
+
+
+# (CM) Deploying a local development server
+
+- npm run dev or similar to set up a local dev server
+- the concept and unhealthily addicting nature of hot reloading
+
+# (DW) Blog directory structure
+
+- This blog is set up as a React/NextJS@13 (with Contentlayer) project, forked from [timlrx / tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog). 
+    - Read more about how a general React/NextJS project is structured [here](https://nextjs.org/docs/getting-started/project-structure) if interested.
+- If you're adding blog posts, there are two main directories that will be of interest to you: `data/blog` where you place the article in MDX format and `public/static/images` where you place the images for that article.
+
+```
+📁 hm_blog/
+...
+│   ├── 📁 data/                       # Stores blog articles and author details   
+│   │   ├── 📁 authors/
+│   │   ├── 📁 blog/
+│   │   │   ├── 📁 <multi-part-post>/
+│   │   │   ├── 📄 <blog-post>.mdx
+...
+│   ├── 📁 public/                     # Stores images and other website assets
+│   │   ├── 📁 static/
+│   │   │   ├── 📁 images/
+│   │   │   │   ├── 📁 <dir-per-post>/ 
+...
+```
+
+## MDX Article files
+
+- Place your articles in the [`data/blog` directory](https://github.com/herd-mentality/hm_blog/tree/main/data/blog). 
+- Articles should be `.mdx` files. You can turn `.md` files into `.mdx` files by simply renaming and adding an `x` to the end of the file extension.
+    - `.mdx` is a format that ...
+
+- All articles require a header
+
+
+- images for those blogs can be any image type (prefer webp, jpg, png) and go in [dir]
+
+# (DW) Extra things
+
+- This is a website built with React, a Javascript front-end web-development library.
+- The core concept is reusable and versatile components (think of them as functions that correspond to features on the page).
+
+```
+📁 hm_blog/
+...
+│   ├── 📁 data/                       # Stores blog articles and author details   
+│   │   ├── 📁 authors/                # Author details - mdx per author
+│   │   │   ├── 📄 <author>.mdx
+│   │   ├── 📁 blog/
+...
+│   ├── 📁 components/                 # Stores components
+│   │   ├── 📄 <component>.tsx
+...
+```
+
+- additional components (ToC) etc
+- setting up author cards
+- resources to learn React/nextjs if interested in creating or editing custom components
+
+# (DW/CM) Branching strategy in herdmentality/hm-blog 
+
+- feature branches (posts, front-end updates) branch off main and are merged back into main
+- to deploy, raise a PR from main to deploy
