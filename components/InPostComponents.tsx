@@ -1,8 +1,8 @@
-interface Props {
+interface CaptionProps {
   text: string
 }
 
-const Caption = ({ text }: Props) => {
+export const Caption: React.FC<CaptionProps> = ({ text }) => {
   return (
     <div className="mono flex flex-row items-start tracking-tighter">
       <span className="main-gradient inline-block bg-clip-text font-bold italic text-transparent">
@@ -13,9 +13,10 @@ const Caption = ({ text }: Props) => {
   )
 }
 
-// Repurposed from https://katiekodes.com/link-underline-grow-tailwind-css/
-const Highlight = ({ text }: Props) => {
-  return <span className="highlight main-gradient">{text}</span>
+interface HighlightProps {
+  text: string
 }
 
-export { Caption, Highlight }
+export const Highlight: React.FC<HighlightProps> = ({ text }) => {
+  return <span className="highlight main-gradient">{text}</span>
+}
