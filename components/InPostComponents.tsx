@@ -1,3 +1,7 @@
+'use client'
+
+import React, { ReactNode } from 'react'
+
 interface CaptionProps {
   text: string
 }
@@ -19,4 +23,25 @@ interface HighlightProps {
 
 export const Highlight: React.FC<HighlightProps> = ({ text }) => {
   return <span className="highlight main-gradient">{text}</span>
+}
+
+interface TabsProps {
+  children: ReactNode
+}
+
+export const Tabs: React.FC<TabsProps> = ({ children }) => {
+  return (
+    <div>
+      <div>
+        {/* Render a Tab for each child */}
+        {React.Children.map(children, (child, index) => (
+          <p key={index}>{child.props.title}</p>
+        ))}
+      </div>
+
+      {React.Children.map(children, (child, index) => (
+        <p key={index}>{child}</p>
+      ))}
+    </div>
+  )
 }
