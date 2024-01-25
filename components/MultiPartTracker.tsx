@@ -9,7 +9,7 @@ interface TrackerProps {
 
 const MultiPartTracker = ({ path, allPosts }: TrackerProps) => {
   // Split path and pull path to directory this post is in
-  const split_path = path.split('/')
+  const split_path = path ? path.split('/') : ['', '']
   const full_nested_path = split_path.slice(0, split_path.length - 1).join('/')
 
   // Filter allPosts for those that share the same nested slug path as this post

@@ -24,7 +24,7 @@ const AuthorCard = ({
       <div className="ml-6 mt-6 flex">
         <div className="flex flex-col justify-center">
           {avatar &&
-            (allBlogs.filter((b) => b.authors.includes(slug)).length != 0 ? (
+            (allBlogs.filter((b) => b.authors?.includes(slug)).length != 0 ? (
               <Link href={'/authors/' + slug} aria-label={`See ${name.match(/^\w+/g)[0]}'s posts`}>
                 <Image
                   alt={name}
@@ -45,7 +45,7 @@ const AuthorCard = ({
             ))}
         </div>
         <div className="ml-4 flex flex-col justify-center">
-          {allBlogs.filter((b) => b.authors.includes(slug)).length != 0 ? (
+          {allBlogs.filter((b) => b.authors?.includes(slug)).length != 0 ? (
             <Link href={'/authors/' + slug} aria-label={`See ${name.match(/^\w+/g)[0]}'s posts`}>
               <h2 className="nav-link mb-0 text-2xl !font-bold leading-8 tracking-tight">{name}</h2>
             </Link>
@@ -66,7 +66,7 @@ const AuthorCard = ({
         {description.length != 0 && (
           <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
         )}
-        {allBlogs.filter((b) => b.authors.includes(slug)).length != 0 && slug && (
+        {allBlogs.filter((b) => b.authors?.includes(slug)).length != 0 && slug && (
           <Link
             href={'/authors/' + slug}
             className="tag-link text-base font-medium leading-6"

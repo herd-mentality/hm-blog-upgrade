@@ -1,5 +1,3 @@
-'use client'
-
 import React, { ReactNode } from 'react'
 
 interface CaptionProps {
@@ -34,13 +32,13 @@ export const Tabs: React.FC<TabsProps> = ({ children }) => {
     <div>
       <div>
         {/* Render a Tab for each child */}
-        {React.Children.map(children, (child, index) => (
-          <p key={index}>{child.props.title}</p>
-        ))}
+        {React.Children.map(children, (child, index) =>
+          React.isValidElement(child) ? <div key={index}>{child.props.title}</div> : null
+        )}
       </div>
 
       {React.Children.map(children, (child, index) => (
-        <p key={index}>{child}</p>
+        <div key={index}>{child}</div>
       ))}
     </div>
   )
